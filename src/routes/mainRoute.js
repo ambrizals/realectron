@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Counters from "../containers/counter";
+import DbPages from "../containers/databases";
 
 export default function mainRoute() {
   return (
@@ -15,7 +16,7 @@ export default function mainRoute() {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/database">Database</Link>
             </li>
           </ul>
         </nav>
@@ -26,8 +27,8 @@ export default function mainRoute() {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/database">
+            <DbPages />
           </Route>
           <Route path="/">
             <Counters />

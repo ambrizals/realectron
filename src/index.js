@@ -17,16 +17,15 @@ import TodoModel from "./models/Todo";
 const { store, persistor } = configureStore;
 
 const adapter = new LokiJSAdapter({
-  dbName: "DBExample",
-  schema: appSchema,
+  appSchema,
+  useWebWorker: false,
+  useIncrementalIndexedDB: true,
 });
 
 const database = new Database({
   adapter,
   modelClasses: [TodoModel],
-  // actionsEnabled: true,
-  useWebWorker: false,
-  useIncrementalIndexedDB: true,
+  actionsEnabled: true,
 });
 
 const Loading = () => {

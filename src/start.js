@@ -12,6 +12,7 @@ function createWindow() {
     height: 768,
     webPreferences: {
       nodeIntegration: true,
+      nodeIntegrationInWorker: true,
     },
   });
   mainWindow.loadURL(
