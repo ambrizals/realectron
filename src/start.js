@@ -13,6 +13,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       nodeIntegrationInWorker: true,
+      experimentalFeatures: true,
     },
   });
   mainWindow.loadURL(
