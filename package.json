@@ -1,17 +1,41 @@
 {
-  "name": "electron-react-app",
+  "name": "bbd",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
+  "main": "src/start.js",
+  "build": {
+    "appId": "ambrizals.bbd.office",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "category": "ambrizals.bbd.office.tools",
+      "iconUrl": "path-to-icon.png"
+    }
+  },
   "dependencies": {
+    "@babel/helper-call-delegate": "^7.10.1",
+    "@nozbe/watermelondb": "^0.15.1",
+    "@nozbe/with-observables": "^1.0.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "cross-env": "^7.0.2",
+    "electron": "^9.0.2",
+    "electron-is-dev": "^1.2.0",
+    "lokijs": "^1.5.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "electron": "cross-env NODE_ENV=dev nodemon --exec \"\"electron .\"\"",
+    "start": "cross-env BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -30,5 +54,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron-builder": "^22.7.0",
+    "electron-reload": "^1.5.0",
+    "nodemon": "^2.0.4",
+    "worker-loader": "^2.0.0"
   }
 }
