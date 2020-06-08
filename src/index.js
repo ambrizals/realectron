@@ -16,32 +16,33 @@ import TodoModel from "./models/Todo";
 
 // Electron
 const electron = window.require("electron");
-const BrowserWindow = electron.remote.BrowserWindow;
+const { ipcRenderer } = electron;
+// const BrowserWindow = electron.remote.BrowserWindow;
 
-const loadView = () => {
-  return `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Mohon Tunggu Sebentar</title>
-        <meta charset="UTF-8">
-      </head>
-      <body>
-        <div id="view">Mohon Tunggu Sebentar</div>
-      </body>
-    </html>
-  `;
-};
+// const loadView = () => {
+//   return `
+//     <!DOCTYPE html>
+//     <html>
+//       <head>
+//         <title>Mohon Tunggu Sebentar</title>
+//         <meta charset="UTF-8">
+//       </head>
+//       <body>
+//         <div id="view">Mohon Tunggu Sebentar</div>
+//       </body>
+//     </html>
+//   `;
+// };
 
-var file = "data:text/html;charset=UTF-8," + encodeURIComponent(loadView());
+// var file = "data:text/html;charset=UTF-8," + encodeURIComponent(loadView());
 
-let win = new BrowserWindow({ width: 500, height: 500, show: true });
-win.loadURL(file).then(() => {
-  // const options = { silent: true };
-  // win.webContents.print(options, () => {
-  //   win.close();
-  // });
-});
+// let win = new BrowserWindow({ width: 500, height: 500, show: true });
+// win.loadURL(file).then(() => {
+//   // const options = { silent: true };
+//   // win.webContents.print(options, () => {
+//   //   win.close();
+//   // });
+// });
 
 const { store, persistor } = configureStore;
 
@@ -81,6 +82,8 @@ function lihatData() {
 
 lihatData();
 // buatData();
+
+console.log(ipcRenderer.sendSync("apps-configuration", "ping"));
 
 const Loading = () => {
   return (
