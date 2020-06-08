@@ -21,7 +21,11 @@ function createWindow() {
       experimentalFeatures: true,
     },
   });
-  mainWindow.loadURL(`file://${path.join(__dirname, "../public/index.html")}`);
+  mainWindow.loadURL(
+    isDev
+      ? `file://${path.join(__dirname, "../public/index.html")}`
+      : `file://${path.join(__dirname, "../build/index.html")}`
+  );
 
   mainWindow.on("closed", () => {
     mainWindow = null;

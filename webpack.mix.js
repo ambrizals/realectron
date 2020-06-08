@@ -3,6 +3,8 @@ var mix = require("laravel-mix");
 
 if (!mix.inProduction()) {
   // Configure what it does
+  mix.copyDirectory("static", "public");
+
   mix
     // This is required for hot reloading
     .setPublicPath("./public")
@@ -25,12 +27,13 @@ if (!mix.inProduction()) {
     })
     // This will copy files from static folder
     // directly into dist folder
-    // .copy('src/static', 'dist')
+    .copy("src/start.js", "build/electron.js")
     // This will process our entry point (app.js)
     // into the dist/js folder
     .react("src/index.js", "public/js");
 } else {
   // Configure what it does
+  mix.copyDirectory("static", "build");
   mix
     // This is required for hot reloading
     .setPublicPath("./build")
