@@ -11,7 +11,7 @@ class readFile extends React.Component {
   }
 
   state = {
-    content: null,
+    content: [],
   };
 
   componentDidMount() {
@@ -33,15 +33,14 @@ class readFile extends React.Component {
   }
 
   getContent() {
+    const newContent = (
+      <div>
+        {this.bacaTeks()}
+        {this.bacaGambar()}
+      </div>
+    );
     this.setState(() => {
-      return {
-        content: (
-          <div>
-            {this.bacaTeks()}
-            {this.bacaGambar()}
-          </div>
-        ),
-      };
+      return { content: this.state.content.concat(newContent) };
     });
   }
 

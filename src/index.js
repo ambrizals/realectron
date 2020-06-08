@@ -12,11 +12,7 @@ import configureStore from "./stores";
 import { PersistGate } from "redux-persist/integration/react";
 
 // Model Declare
-import TodoModel from "./models/Todo";
-
-// Electron
-const electron = window.require("electron");
-const { ipcRenderer } = electron;
+import Todo from "./models/Todo";
 
 const { store, persistor } = configureStore;
 
@@ -29,32 +25,23 @@ const adapter = new LokiJSAdapter({
 
 const database = new Database({
   adapter,
-  modelClasses: [TodoModel],
+  modelClasses: [Todo],
   actionsEnabled: true,
 });
 
-const todosCollection = database.collections.get("todos");
+// const todosCollection = database.collections.get("todos");
 
-async function buatData() {
-  await database.action(async () => {
-    const newTodos = await todosCollection.create((todo) => {
-      todo.title = "New post";
-      todo.description = "Lorem ipsum...";
-    });
+// async function buatData() {
+//   await database.action(async () => {
+//     const newTodos = await todosCollection.create((todo) => {
+//       todo.title = "New post";
+//       todo.description = "Lorem ipsum...";
+//     });
 
-    console.log(newTodos);
-  });
-}
+//     console.log(newTodos);
+//   });
+// }
 
-function lihatData() {
-  const getTodos = todosCollection.query().fetch();
-
-  getTodos.then((data) => {
-    console.log(data);
-  });
-}
-
-lihatData();
 // buatData();
 
 const Loading = () => {
