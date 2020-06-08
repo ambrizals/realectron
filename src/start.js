@@ -32,9 +32,19 @@ function createWindow() {
   });
   ipcMain.on("apps-configuration", (event, arg) => {
     // console.log(arg); // prints "ping"
-    event.returnValue = {
-      appDir: app.getAppPath(),
-    };
+    if (isDev) {
+      prodDir = app
+        .getAppPath()
+        .replace("bbd", "bbd" + String.fromCharCode(92) + "localStorage");
+      event.returnValue = {
+        appDir: prodDir,
+      };
+    } else {
+      prodDir = app.getAppPath().replace("app.asar", "localStorage");
+      event.returnValue = {
+        appDir: prodDir,
+      };
+    }
   });
 }
 

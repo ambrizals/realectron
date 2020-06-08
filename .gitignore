@@ -16,6 +16,7 @@
 /build
 /debug
 /public
+/localStorage
 
 # misc
 .DS_Store
