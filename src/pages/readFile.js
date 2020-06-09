@@ -1,5 +1,6 @@
 import React from "react";
 import fs from "fs";
+import uid from "uid";
 
 const electron = window.require("electron");
 const { ipcRenderer } = electron;
@@ -27,6 +28,7 @@ class readFile extends React.Component {
   }
 
   bacaGambar() {
+    console.log(config.appDir);
     const path = config.appDir + String.fromCharCode(92) + "assets.png";
     const gambar = <img src={path} alt="coba" />;
     return gambar;
@@ -34,7 +36,7 @@ class readFile extends React.Component {
 
   getContent() {
     const newContent = (
-      <div>
+      <div key={uid()}>
         {this.bacaTeks()}
         {this.bacaGambar()}
       </div>

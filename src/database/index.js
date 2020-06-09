@@ -1,10 +1,5 @@
-import Dexie from "dexie";
+import db from "./db";
 
-const db = new Dexie("realectron");
-
-// Create database to indexed db
-db.version(0).stores({
-  todo: "title, description, created_at, updated_at",
-});
-
-export default db;
+export default {
+  db,
+};
