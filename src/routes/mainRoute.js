@@ -26,9 +26,15 @@ class mainRoute extends React.Component {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/about" component={ReadFile}></Route>
-            <Route path="/database" component={DbPages}></Route>
-            <Route path="/" component={Counters}></Route>
+            <Route path="/about">
+              <ReadFile />
+            </Route>
+            <Route path="/database">
+              <DbPages />
+            </Route>
+            <Route path="/">
+              <Counters />
+            </Route>
           </Switch>
         </div>
       </Router>
